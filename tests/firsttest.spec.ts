@@ -3,7 +3,7 @@ import {test } from '@playwright/test'
 //we use hook for repeat stuff : below lines show that
 
 test.beforeEach(async({page})=>{
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
     await page.getByText('Forms').click()
 })
 

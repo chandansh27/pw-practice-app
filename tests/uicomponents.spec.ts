@@ -4,7 +4,7 @@ import { delay } from 'rxjs-compat/operator/delay'
 
 test.beforeEach(async({page})=>{
 
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
 
 })
 

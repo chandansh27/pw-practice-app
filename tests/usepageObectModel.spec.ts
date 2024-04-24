@@ -8,7 +8,7 @@ import {faker} from '@faker-js/faker'
 
 test.beforeEach(async({page})=>{
 
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
 
 })
 
@@ -58,9 +58,17 @@ test('parametrized methods', async({page})=>{
    const randomEmail =`${randomFullName.replace(' ', '')}${faker.number.int(1000)}@test.com`  // we use replace function from JS becuse name and email giving space
 
    await pm.navigateTo().formLayoutPage()
-   await pm.onFormLayoutPage().submitUsingTheGridFormWithCredentialsAndSelectOprion('cs@test.com', 'welcome123', 'Option 2')
+   await pm.onFormLayoutPage().submitUsingTheGridFormWithCredentialsAndSelectOprion(process.env.USERNAME, process.env.PASSWORD, 'Option 2')
+
+   await page.screenshot({path: 'screenShot/formLayoutPage.png'})  // this line will create screenshot folder and file
+
+   const buffer= await page.screenshot() 
+   console.log(buffer.toString('base64'))// just to print the logs in binary format
+
    //await pm.onFormLayoutPage().submInInlineWithNameEmailandCheckBox('CS Sharma', 'cs@test.com', true)
    await pm.onFormLayoutPage().submInInlineWithNameEmailandCheckBox(randomFullName, randomEmail, true) // we r using faker for random data
+
+   await page.locator('nb-card',{hasText: "Inline form"}).screenshot({path: 'screenShot/formLayoutPage.png'})
 
    await pm.navigateTo().datepickerPage()
    await pm.onDatePickerPage().selectCommanDatePickerDateFromToday(70)

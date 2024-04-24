@@ -1,15 +1,16 @@
 import { defineConfig, devices } from '@playwright/test';
+import type { TestOptions } from './tests/test-options';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+ require('dotenv').config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export default defineConfig <TestOptions>({
   timeout: 10000,
   globalTimeout: 60000,
 
@@ -29,30 +30,52 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    //actionTimeout: 5000,
-    navigationTimeout: 5000,
+    
+    
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+     //baseURL: 'http://localhost:4200/',
+
+     globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/',
+     baseURL: process.env.DEV ==='1' ? 'http://localhost:4200/'
+            : process.env.Staging == '1' ? 'http://localhost:4202/' 
+            : 'http://localhost:4201/', 
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    //actionTimeout: 5000,
+    navigationTimeout: 5000,
+    //video: 'on'     this is one of the way to record video
+
+    //also create with defined resolution
+    video: {
+
+      mode: 'on',
+      size: {width: 1920, height: 1080}
+    }
+
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4200/'
+       },
     },
 
     {
-      name: 'firefox',
+      name: 'dev',
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: 'staging',
+      use: 
+      { ...devices['Desktop Safari'] ,
+      baseURL: 'http://localhost:4200/'
+      },
 
       
     },
