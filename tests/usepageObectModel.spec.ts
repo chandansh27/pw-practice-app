@@ -60,10 +60,10 @@ test('parametrized methods', async({page})=>{
    await pm.navigateTo().formLayoutPage()
    await pm.onFormLayoutPage().submitUsingTheGridFormWithCredentialsAndSelectOprion(process.env.USERNAME, process.env.PASSWORD, 'Option 2')
 
-   await page.screenshot({path: 'screenShot/formLayoutPage.png'})  // this line will create screenshot folder and file
+   //await page.screenshot({path: 'screenShot/formLayoutPage.png'})  // this line will create screenshot folder and file
 
-   const buffer= await page.screenshot() 
-   console.log(buffer.toString('base64'))// just to print the logs in binary format
+   //const buffer= await page.screenshot() 
+   //console.log(buffer.toString('base64'))// just to print the logs in binary format
 
    //await pm.onFormLayoutPage().submInInlineWithNameEmailandCheckBox('CS Sharma', 'cs@test.com', true)
    await pm.onFormLayoutPage().submInInlineWithNameEmailandCheckBox(randomFullName, randomEmail, true) // we r using faker for random data
