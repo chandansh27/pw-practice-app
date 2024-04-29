@@ -12,7 +12,7 @@ test.beforeEach(async({page})=>{
 
 })
 
-test('navigate to form page', async({page})=>{
+test('navigate to form page @smoke @regression', async({page})=>{
 
     // we have created a Page Manger class to get all the navigation so we do need below code , just keep for own reference 
     
@@ -38,7 +38,7 @@ test('navigate to form page', async({page})=>{
 
 })
 
-test('parametrized methods', async({page})=>{
+test('parametrized methods @smoke', async({page})=>{
    
    // we can use below commented code approach in better way as below  
     //const navigateTo = new NavigationPage(page)

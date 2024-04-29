@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Sun Apr 28 18:44:12 IST 2024","Sun Apr 28 18:44:37 IST 2024","25541","mobile","tests\testMobile.spec.ts","","","","input fields",""
+"passed","Sun Apr 28 17:28:19 IST 2024","Sun Apr 28 17:28:29 IST 2024","9898","chromium","tests\usepageObectModel.spec.ts","","","","navigate to form page @smoke @regression",""
+"passed","Sun Apr 28 17:28:29 IST 2024","Sun Apr 28 17:28:34 IST 2024","4693","chromium","tests\usepageObectModel.spec.ts","","","","parametrized methods @smoke",""
