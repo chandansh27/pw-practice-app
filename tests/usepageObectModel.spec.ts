@@ -77,3 +77,11 @@ test('parametrized methods @smoke', async({page})=>{
 
 })
 
+test.only('testing with argo CI', async({page})=>{
+   
+    const pm= new PageManager(page)
+    await pm.navigateTo().formLayoutPage()
+    await pm.navigateTo().datepickerPage()
+  
+})
+
